@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>project management</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    {% load static %}
+    <style>
+    
+        * {
+ box-sizing: border-box;
+ margin: 0;
+ padding: 0;
+ background-color: #ffffff;
+}
+
+/* body{
+    /* background-image: url("{% static 'image/science.jpg' %}"); */
+    /* background-size: cover; */
+ 
+
+li, a, button {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    color: #111213;
+    text-decoration: none;
+
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 10%;
+
+}
+
+.nav_links {
+    list-style: none;
+}
+.nav_links li{
+    display: inline-block;
+    padding: 0px 20px;
+}
+ul li ul.dropdown li {
+    display:block;
+}
+ul li ul.dropdown {
+    width: 100%;
+    /* background: #22438C; */
+    position: absolute;
+    z-index: 999;
+    display: none;
+}
+/* ul li a:hover {
+    background: #112c66;
+} */
+ul li:hover ul.dropdown{
+    display: block;
+}
+    </style>
+  </head>
+  <body>
+    <header>
+        <!-- <img class="logo" src="static/image/logo.jpg" alt="logo" height="100px" width="100px"> -->
+        <nav>
+           
+            <ul class="nav_links">
+                  <li><h2 style="color: rgb(19, 18, 18);">Amhara Science and Technology <br> project management</h2></li>
+                  <li><a href="{% url 'home'%}">Home</a></li>
+                  
+                  <li><a href="#">Year</a>
+                      <ul class="dropdown">
+                           <li><a href="#">2013</a></li>
+                           <li><a href="#">2014</a></li>
+                           <li><a href="#">2015</a></li>
+                           <li><a href="#">2016</a></li>
+                      </ul>
+                  </li>
+            </ul>
+            <form action="{% url 'search' %}" method="get" class="d-flex" role="search">
+                <input class="form-control me-2" type="text" name="query" placeholder="Search by Area of study" aria-label="Search ">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+              </form>
+        </nav>
+    </header>
+    <div class="container" style="color:#0f1111" >
+        {% block content %}
+        
+        {% for ProjectUpload in projectUploads %}
+            <h5><a style="color:#1155e9" href="join.html">{{ ProjectUpload.researcherName }} <b>{{ ProjectUpload.researchTitle }}</b></h5></a>
+            <br>{{ ProjectUpload.description }}<hr>
+            
+        {% endfor %}
+    {% endblock %}
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+  </body>
+</html>
